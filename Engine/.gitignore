@@ -4,3 +4,9 @@
 !../.idea/.idea.*/.idea
 ../.idea/.idea.*/.idea/*
 !../.idea/.idea.*/.idea/runConfigurations
+/.idea/*
+!/.idea/.idea.*
+/.idea/.idea.*/*
+!/.idea/.idea.*/.idea
+/.idea/.idea.*/.idea/*
+!/.idea/.idea.*/.idea/runConfigurations
