@@ -34,7 +34,19 @@ for (int i = 0; i < 10000; i++)
 // testObjects.Sort((testObject1, testObject2) => string.Compare(testObject1.Str, testObject2.Str));
 // Console.WriteLine("string orderTest = " + aggregated.SequenceEqual(strOrdered));
 
-// var filterAggregator = new FilterAggregator<TestObject>(testObject => testObject.Str.Contains('V'));
+bool multipleContains(string str, string chars)
+{
+    foreach (char ch in chars)
+    {
+        if (str.Contains(ch))
+            return true;
+    }
+
+    return false;
+}
+
+var filterAggregator =
+    new FilterAggregator<TestObject>(testObject => multipleContains(testObject.Str, "abcdefghijklmnopqrstuvwxyz"));
 // var filtered = filterAggregator.Aggregate(testObjects);
 // var Cfiltered = 0;
 // var CV = 0;
@@ -52,3 +64,4 @@ for (int i = 0; i < 10000; i++)
 // Console.WriteLine(filtered.Count + CV == testObjects.Count);
 
 
+SumOfSumsAggregator<TestObject> sumOfSumsAggregator = new SumOfSumsAggregator<TestObject>(o => o.Number);
