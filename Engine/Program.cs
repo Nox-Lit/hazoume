@@ -65,3 +65,7 @@ var filterAggregator =
 
 
 SumOfSumsAggregator<TestObject> sumOfSumsAggregator = new SumOfSumsAggregator<TestObject>(o => o.Number);
+
+WeightedAverageDate<TestObject> moy = new WeightedAverageDate<TestObject>(d => d.Date, d=> d.Number);
+
+Console.WriteLine(moy.Aggregate(testObjects).ToString());

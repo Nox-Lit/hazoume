@@ -1,6 +1,6 @@
 ﻿namespace Engine;
 
-public class OrderAggregator<TValue> : Aggregator<TValue, List<TValue>>
+public class OrderAggregator<TValue> : Aggregator<TValue, List<TValue>> where TValue : IComparable<TValue>
 {
     private Func<TValue, TValue, int> ComparatorFunction;
 
@@ -20,9 +20,11 @@ public class OrderAggregator<TValue> : Aggregator<TValue, List<TValue>>
 
     public override List<TValue> Aggregate(List<TValue> items)
     {
+        return items.OrderBy(t => t).ToList();
+
         // return items.Sort((value1, value2) => ComparatorFunction(value1, value2));
-        List<TValue> result = new List<TValue>(items);
-        result.Sort((value1, value2) => ComparatorFunction(value1, value2));
-        return result;
+        // List<TValue> result = new List<TValue>(items);
+        // result.Sort((value1, value2) => ComparatorFunction(value1, value2));
+        // return result;
     }
 }

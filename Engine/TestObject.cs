@@ -17,7 +17,7 @@ public class TestObject
     {
         Str = RandomString(Random.Next(20));
         Id = Count++;
-        Number = Random.NextDouble() + Random.Next(Int32.MinValue, Int32.MaxValue);
+        Number = Random.NextDouble(); //+ Random.Next(Int32.MinValue, Int32.MaxValue);
         Date = new DateTime(Random.NextInt64(DateTime.MinValue.Ticks, DateTime.MaxValue.Ticks));
         
     }
