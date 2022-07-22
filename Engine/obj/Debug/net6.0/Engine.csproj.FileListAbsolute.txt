@@ -1,0 +1,15 @@
+D:\RiderProjects\Engine\Engine\bin\Debug\net6.0\Engine.exe
+D:\RiderProjects\Engine\Engine\bin\Debug\net6.0\Engine.deps.json
+D:\RiderProjects\Engine\Engine\bin\Debug\net6.0\Engine.runtimeconfig.json
+D:\RiderProjects\Engine\Engine\bin\Debug\net6.0\Engine.dll
+D:\RiderProjects\Engine\Engine\bin\Debug\net6.0\Engine.pdb
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\Engine.csproj.AssemblyReference.cache
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\Engine.GeneratedMSBuildEditorConfig.editorconfig
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\Engine.AssemblyInfoInputs.cache
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\Engine.AssemblyInfo.cs
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\Engine.csproj.CoreCompileInputs.cache
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\Engine.dll
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\refint\Engine.dll
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\Engine.pdb
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\Engine.genruntimeconfig.cache
+D:\RiderProjects\Engine\Engine\obj\Debug\net6.0\ref\Engine.dll
