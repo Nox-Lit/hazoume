@@ -1,51 +1,53 @@
 ﻿namespace Engine;
 
-public class WeightedAverage<TValue> : Aggregator<TValue, double>
+public class WeightedAverage<TValue> : Aggregator<TValue, dynamic>
 {
-    private Func<TValue, double> _value;
-    private Func<TValue, double> _weight;
+    private Func<TValue, dynamic> _value;
+    private Func<TValue, dynamic> _weight;
 
-    public WeightedAverage(Func<TValue, double> valueFunc, Func<TValue, double> weightFunc)
+    public WeightedAverage(Func<TValue, dynamic> valueFunc, Func<TValue, dynamic> weightFunc)
     {
         _value = valueFunc;
         _weight = weightFunc;
     }
 
-    public override double Aggregate(List<TValue> items)
+    public override dynamic Aggregate(List<TValue> items)
     {
-        double sum = 0;
-        double totalWeight = 0;
-        foreach (var item in items)
+        if (items.Count == 0)
+            throw new EmptyListException("WeightedAverage.Aggregate argument is empty list.");
+        dynamic sum = _value(items[0]) * _weight(items[0]);
+        dynamic totalWeight = _weight(items[0]);
+        for (int i = 1; i < items.Count; i++)
         {
-            sum += _value(item) * _weight(item);
-            totalWeight += _weight(item);
+            sum = _value(items[i]) * _weight(items[i]);
+            totalWeight = _weight(items[i]);
         }
 
-        return totalWeight == 0 ? 0 : sum / totalWeight;
+        return sum / totalWeight;
     }
 }
 
-public class WeightedAverageDate<TValue> : Aggregator<TValue, DateTime>
-{
-    private Func<TValue, DateTime> _value;
-    private Func<TValue, double> _weight;
-
-    public WeightedAverageDate(Func<TValue, DateTime> valueFunc, Func<TValue, double> weightFunc)
-    {
-        _value = valueFunc;
-        _weight = weightFunc;
-    }
-
-    public override DateTime Aggregate(List<TValue> items)
-    {
-        double sum = 0;
-        double totalWeight = 0;
-        foreach (var item in items)
-        {
-            sum += _value(item).Ticks * _weight(item);
-            totalWeight += _weight(item);
-        }
-
-        return new DateTime ((long) (totalWeight == 0 ? 0 : sum / totalWeight));
-    }
-}
+// public class WeightedAverageDate<TValue> : Aggregator<TValue, DateTime>
+// {
+//     private Func<TValue, DateTime> _value;
+//     private Func<TValue, double> _weight;
+//
+//     public WeightedAverageDate(Func<TValue, DateTime> valueFunc, Func<TValue, double> weightFunc)
+//     {
+//         _value = valueFunc;
+//         _weight = weightFunc;
+//     }
+//
+//     public override DateTime Aggregate(List<TValue> items)
+//     {
+//         double sum = 0;
+//         double totalWeight = 0;
+//         foreach (var item in items)
+//         {
+//             sum += _value(item).Ticks * _weight(item);
+//             totalWeight += _weight(item);
+//         }
+//
+//         return new DateTime ((long) (totalWeight == 0 ? 0 : sum / totalWeight));
+//     }
+// }
