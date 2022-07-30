@@ -13,15 +13,17 @@ public class WeightedAverage<TValue> : Aggregator<TValue, double>
 
     public override double Aggregate(List<TValue> items)
     {
-        double sum = 0;
-        double totalWeight = 0;
-        foreach (var item in items)
-        {
-            sum += _value(item) * _weight(item);
-            totalWeight += _weight(item);
-        }
+        return items.Select(i => _value(i) * _weight(i)).Sum() / items.Select(i => _weight(i)).Sum();
 
-        return totalWeight == 0 ? 0 : sum / totalWeight;
+        // double sum = 0;
+        // double totalWeight = 0;
+        // foreach (var item in items)
+        // {
+        //     sum += _value(item) * _weight(item);
+        //     totalWeight += _weight(item);
+        // }
+        //
+        // return totalWeight == 0 ? 0 : sum / totalWeight;
     }
 }
 
