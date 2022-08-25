@@ -1,4 +1,6 @@
-﻿namespace Engine;
+﻿using System.Numerics;
+
+namespace Engine;
 
 public class TestObject
 {
@@ -6,6 +8,7 @@ public class TestObject
     public int Id { get; set; }
     public double Number { get; set; }
     public DateTime Date { get; set; }
+    public Complex Complex { get; set; }
     public static int Count { get; private set; }
 
     static TestObject()
@@ -19,7 +22,7 @@ public class TestObject
         Id = Count++;
         Number = Random.NextDouble(); //+ Random.Next(Int32.MinValue, Int32.MaxValue);
         Date = new DateTime(Random.NextInt64(DateTime.MinValue.Ticks, DateTime.MaxValue.Ticks));
-        
+        Complex = new Complex(Number * Random.Next(20), Number * Random.Next(20));
     }
 
     ~TestObject()

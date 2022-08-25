@@ -1,5 +1,6 @@
 ﻿// using System.Data.SqlClient;
 
+using System.Numerics;
 using Engine;
 
 Console.WriteLine("Hello, World!");
@@ -70,3 +71,30 @@ WeightedAverageDate<TestObject> moy = new WeightedAverageDate<TestObject>(d => d
 
 Console.WriteLine(moy.Aggregate(testObjects).ToString());
 
+void vectorSumTest()
+{
+    // generate list of vectors
+    var random = new Random(1);
+    Int32 dim = random.Next(20);
+    var vectors = new List<Vector<double>>();
+    for (int i = 0; i < 1000; i++)
+    {
+        var v = new double[dim];
+        for (int j = 0; j < dim; j++)
+        {
+            v[j] = random.NextDouble();
+        }
+        vectors.Add(new Vector<double>(v));
+    }
+
+    var agg = new WeightedAverageVector(v => v, v => random.NextDouble());
+    Console.WriteLine(agg.Aggregate(vectors).ToString());
+}
+
+vectorSumTest();
+
+WeightedAverageComplex<TestObject> complexSumTest = new WeightedAverageComplex<TestObject>(o => o.Complex, o => o.Number);
+
+Console.WriteLine(complexSumTest.Aggregate(testObjects).ToString());
+
+GeometricAvgAggregator<TestObject> geometricAvgAggregator = new GeometricAvgAggregator<TestObject>(o => o.Id);
